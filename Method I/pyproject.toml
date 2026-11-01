@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=70"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tkh-assessment"
+dynamic = ["version"]
+description = "TKH Method I: reproducible temporal native-hypergraph assessment"
+requires-python = ">=3.12,<3.14"
+dependencies = ["numpy", "scipy", "scikit-learn", "sentence-transformers", "jsonschema", "requests", "pypdf", "reportlab", "matplotlib", "numba"]
+
+[project.scripts]
+tkh-assessment = "tkh_assessment.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+
+[tool.setuptools.dynamic]
+version = {attr = "tkh_assessment.__version__"}
